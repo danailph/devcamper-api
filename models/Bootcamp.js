@@ -135,4 +135,16 @@ BootcampSchema.virtual('_courses', {
   justOne: false,
 })
 
+BootcampSchema.pre('remove', async function (next) {
+  await this.model('Review').deleteMany({ bootcamp: this._id })
+  next()
+})
+
+BootcampSchema.virtual('_reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'bootcamp',
+  justOne: false,
+})
+
 module.exports = mongoose.model('Bootcamp', BootcampSchema)
