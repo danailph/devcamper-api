@@ -1,4 +1,4 @@
-const ErrorResponse = require('../utilities/ErrorResponse')
+const ErrorResponse = require('../utilities/errorResponse')
 
 const errorHandler = (err, req, res, next) => {
   console.log(err.stack.red)
